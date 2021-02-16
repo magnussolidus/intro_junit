@@ -2,8 +2,9 @@ package carrinho;
 
 import produto.Produto;
 
-import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
@@ -32,4 +33,34 @@ public class Carrinho_teste {
 		
 		assertEquals(_total, chart.getValorTotal());
 	}
+	
+	@Test
+	void newItem(ArrayList<Produto> itens, Produto desiredItem)
+	{
+		assertNotNull(itens);
+		assertTrue(itens.contains(desiredItem));
+	}
+	
+	@Test
+	void itemRemoval(ArrayList<Produto> itens, Produto desiredItem)
+	{
+		assertNotNull(itens);
+		assertFalse(itens.contains(desiredItem));
+	}
+	
+	@Test
+	void checkSize(ArrayList<Produto> itens)
+	{
+		assertNotNull(itens);
+		assertEquals(itens.size(), chart.getQtdeItems());
+	}
+	
+	@Test
+	// Deve ser chamado para testar o carrinho depois que ele for esvaziado
+	void isEmpty(ArrayList<Produto> itens)
+	{
+		assertNotNull(itens);
+		assertTrue(itens.size() == 0);
+	}
+	
 }
